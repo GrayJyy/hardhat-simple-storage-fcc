@@ -1,26 +1,33 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+// I'm a comment!
+// SPDX-License-Identifier: MIT
 
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
+pragma solidity ^0.8.7;
+
+// pragma solidity ^0.8.0;
+// pragma solidity >=0.8.0 <0.9.0;
 
 contract SimpleStorage {
-    uint public unlockTime;
-    address payable public owner;
+    uint256 favoriteNumber;
 
-    event Withdrawal(uint amount, uint when);
+    struct People {
+        uint256 favoriteNumber;
+        string name;
+    }
+    // uint256[] public anArray;
+    People[] public people;
 
-    constructor() {}
+    mapping(string => uint256) public nameToFavoriteNumber;
 
-    function withdraw() public {
-        // Uncomment this line, and the import of "hardhat/console.sol", to print a log in your terminal
-        // console.log("Unlock time is %o and block timestamp is %o", unlockTime, block.timestamp);
+    function store(uint256 _favoriteNumber) public {
+        favoriteNumber = _favoriteNumber;
+    }
 
-        require(block.timestamp >= unlockTime, "You can't withdraw yet");
-        require(msg.sender == owner, "You aren't the owner");
+    function retrieve() public view returns (uint256) {
+        return favoriteNumber;
+    }
 
-        emit Withdrawal(address(this).balance, block.timestamp);
-
-        owner.transfer(address(this).balance);
+    function addPerson(string memory _name, uint256 _favoriteNumber) public {
+        people.push(People(_favoriteNumber, _name));
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 }
