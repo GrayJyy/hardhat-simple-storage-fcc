@@ -1,5 +1,5 @@
 //imports
-const { ethers, run, network } = require("hardhat");
+import { ethers, run, network } from "hardhat";
 //async main
 async function main() {
   const SimpleFactory = await ethers.getContractFactory("SimpleStorage");
@@ -37,8 +37,8 @@ async function verify(contractAddress, args) {
 }
 //main
 main()
-  .then((process.exitCode = 0))
+  .then(process.exit(0))
   .catch((error) => {
     console.error(error);
-    process.exitCode = 1;
+    process.exit(1);
   });

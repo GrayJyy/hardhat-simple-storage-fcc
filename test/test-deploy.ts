@@ -1,4 +1,4 @@
-const { ethers } = require("hardhat");
+import { ethers } from "hardhat";
 const { assert, expect } = require("chai");
 
 describe("SimpleStorage", () => {
@@ -24,5 +24,4 @@ describe("SimpleStorage", () => {
     const updateValue = await simpleStorage.retrieve();
     assert.equal(expectedValue, updateValue.toString());
   });
-  it("Should ");
 });

@@ -1,9 +1,9 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config();
-require("@nomiclabs/hardhat-etherscan");
-require("./tasks/block-number");
-require("hardhat-gas-reporter");
-require("solidity-coverage");
+import "@nomicfoundation/hardhat-toolbox";
+import "dotenv/config";
+import "@nomiclabs/hardhat-etherscan";
+import "./tasks/block-number";
+import "hardhat-gas-reporter";
+import "solidity-coverage";
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
@@ -32,12 +32,12 @@ module.exports = {
     // Obtain one at https://etherscan.io/
     apiKey: ETHERSCAN_API_KEY,
   },
-  gasReporter: {
-    // enabled: true,
-    enabled: false,
-    outputFile: "gas-report.txt",
-    currency: "USD",
-    coinmarketcap: COINMARKETCAP_API_KEY,
-    // token: "MATIC",
-  },
+  // gasReporter: {
+  //   // enabled: true,
+  //   enabled: false,
+  //   outputFile: "gas-report.txt",
+  //   currency: "USD",
+  //   coinmarketcap: COINMARKETCAP_API_KEY,
+  //   // token: "MATIC",
+  // },
 };
